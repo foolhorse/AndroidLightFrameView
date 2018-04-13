@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LightFrameView">
+        <attr name="sweepRectsCount" format="integer" />
+        <attr name="linearRectsCount" format="integer" />
+        <attr name="sweepGradientStartColor" format="color" />
+        <attr name="sweepGradientEndColor" format="color" />
+        <attr name="linearGradientStartColor" format="color" />
+        <attr name="linearGradientEndColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="maxAlphaRate" format="integer" />
+        <attr name="maxRoundRectRadiusRate" format="dimension" />
+
+    </declare-styleable>
+</resources>
