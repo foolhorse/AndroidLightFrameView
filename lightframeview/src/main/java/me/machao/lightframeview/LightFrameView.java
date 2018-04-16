@@ -132,7 +132,7 @@ public class LightFrameView extends ViewGroup {
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
 
-        if(!isEffectsEnabled){
+        if (!isEffectsEnabled) {
             return;
         }
 
@@ -173,14 +173,14 @@ public class LightFrameView extends ViewGroup {
         sweepRectsCount = typedArray.getInt(R.styleable.LightFrameView_sweepRectsCount, DEFAULT_SWEEP_RECTS_COUNT);
         linearRectsCount = typedArray.getInt(R.styleable.LightFrameView_sweepRectsCount, DEFAULT_LINEAR_RECTS_COUNT);
 
-        strokeWidth = typedArray.getDimension(R.styleable.LightFrameView_strokeWidth, DEFAULT_STROKE_WIDTH);
+        strokeWidth = typedArray.getDimension(R.styleable.LightFrameView_strokeWidth, Utils.dp2px(getContext(), DEFAULT_STROKE_WIDTH));
         sweepGradientStartColor = typedArray.getColor(R.styleable.LightFrameView_sweepGradientStartColor, DEFAULT_SWEEP_GRADIENT_START_COLOR);
         sweepGradientEndColor = typedArray.getColor(R.styleable.LightFrameView_sweepGradientEndColor, DEFAULT_SWEEP_GRADIENT_END_COLOR);
         linearGradientStartColor = typedArray.getColor(R.styleable.LightFrameView_linearGradientStartColor, DEFAULT_LINEAR_GRADIENT_START_COLOR);
         linearGradientEndColor = typedArray.getColor(R.styleable.LightFrameView_linearGradientStartColor, DEFAULT_LINEAR_GRADIENT_END_COLOR);
 
         maxAlphaRate = typedArray.getInt(R.styleable.LightFrameView_maxAlphaRate, DEFAULT_MAX_ALPHA_RATE);
-        maxRoundRectRadiusRate = typedArray.getDimension(R.styleable.LightFrameView_maxRoundRectRadiusRate, DEFAULT_MAX_ROUND_RECT_RADIUS_RATE);
+        maxRoundRectRadiusRate = typedArray.getDimension(R.styleable.LightFrameView_maxRoundRectRadiusRate, Utils.dp2px(getContext(), DEFAULT_MAX_ROUND_RECT_RADIUS_RATE));
 
         typedArray.recycle();
 
