@@ -8,8 +8,14 @@
     android:padding="16dp"
     tools:context="me.machao.lightframeview.sample.MainActivity">
 
+    <Button
+        android:id="@+id/btnWrapView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="switch" />
+
     <me.machao.lightframeview.LightFrameView
-        android:id="@+id/lfv"
+        android:id="@+id/lfvWrapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
@@ -22,8 +28,72 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView in LightFrameView" />
+            android:text="LightFrameView wrap View" />
     </me.machao.lightframeview.LightFrameView>
 
+
+    <Button
+        android:id="@+id/btnWrapViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="switch" />
+
+    <me.machao.lightframeview.LightFrameView
+        android:id="@+id/lfvWrapViewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:linearGradientEndColor="#f00"
+        app:linearGradientStartColor="#ff0"
+        app:strokeWidth="2dp"
+        app:sweepGradientEndColor="#0f0"
+        app:sweepGradientStartColor="#00f">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="128dp"
+                android:text="LightFrameView wrap ViewGroup" />
+        </FrameLayout>
+    </me.machao.lightframeview.LightFrameView>
+
+    <Button
+        android:id="@+id/btnWrapScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="switch" />
+
+    <me.machao.lightframeview.LightFrameView
+        android:id="@+id/lfvWrapScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:linearGradientEndColor="#f00"
+        app:linearGradientStartColor="#ff0"
+        app:strokeWidth="2dp"
+        app:sweepGradientEndColor="#0f0"
+        app:sweepGradientStartColor="#00f">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="128dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LightFrameView wrap ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView  ScrollView LightFrameView wrap ScrollView " />
+        </ScrollView>
+    </me.machao.lightframeview.LightFrameView>
 </LinearLayout>
 
