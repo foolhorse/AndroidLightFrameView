@@ -12,7 +12,12 @@
         android:id="@+id/btnBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Basic use" />
+        android:text="Basic" />
 
+    <Button
+        android:id="@+id/btnVaporwave"
+        android:text="Vaporwave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="me.machao.lightframeview.sample.VaporwaveActivity">
+
+    <me.machao.lightframeview.LightFrameView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:linearRectsCount="2"
+        app:strokeWidth="8dp"
+        app:sweepRectsCount="2">
+
+        <TextView
+            android:id="@+id/tvMobian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:shadowColor="#4af"
+            android:text="魔鞭"
+            android:textColor="#8ce"
+            android:textSize="72sp" />
+
+    </me.machao.lightframeview.LightFrameView>
+
+    <me.machao.lightframeview.LightFrameView
+        android:id="@+id/lfvYixianqian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:linearRectsCount="2"
+        app:strokeWidth="2dp"
+        app:sweepRectsCount="2">
+
+        <TextView
+            android:id="@+id/tvYixianqian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络一线牵\n珍惜这段缘"
+            android:textColor="#f8d"
+            android:textSize="48sp" />
+
+    </me.machao.lightframeview.LightFrameView>
+</LinearLayout>

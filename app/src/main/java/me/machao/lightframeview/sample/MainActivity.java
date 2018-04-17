@@ -17,5 +17,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, BasicActivity.class));
             }
         });
+        findViewById(R.id.btnVaporwave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, VaporwaveActivity.class));
+            }
+        });
     }
 }

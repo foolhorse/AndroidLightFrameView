@@ -35,10 +35,10 @@ public class LightFrameView extends ViewGroup {
 
     private float strokeWidth;
 
-    private static final int DEFAULT_SWEEP_GRADIENT_START_COLOR = 0xFFFFFFFF;
-    private static final int DEFAULT_SWEEP_GRADIENT_END_COLOR = 0x00FFFFFF;
-    private static final int DEFAULT_LINEAR_GRADIENT_START_COLOR = 0xFFFFFFFF;
-    private static final int DEFAULT_LINEAR_GRADIENT_END_COLOR = 0x00FFFFFF;
+    private static final int DEFAULT_SWEEP_GRADIENT_START_COLOR = 0xFF00FFFF;
+    private static final int DEFAULT_SWEEP_GRADIENT_END_COLOR = 0x0000FFFF;
+    private static final int DEFAULT_LINEAR_GRADIENT_START_COLOR = 0xFFFFFF00;
+    private static final int DEFAULT_LINEAR_GRADIENT_END_COLOR = 0x00FFFF00;
 
     private int sweepGradientStartColor;
     private int sweepGradientEndColor;
