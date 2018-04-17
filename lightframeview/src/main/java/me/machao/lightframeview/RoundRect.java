@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Random;
 
 class RoundRect {
 
+    private Random random;
     private float left;
     private float top;
     private float right;
@@ -21,60 +23,97 @@ class RoundRect {
     private float radius;
     private float strokeWidth;
 
-    private RectF rect ;
+    private RectF rect;
 
-    private int alphaMaxRate = 0x40;
-    private float radiusMaxRate = 4;
+    private int alphaMaxRate;
+    private float radiusMaxRate;
 
+    private int alphaMaxRange;
+    private float radiusMaxRange;
 
-    RoundRect(int left, int top, int right, int bottom, int alphaMaxRate, float radiusMaxRate, float strokeWidth) {
-        this.left = left;
-        this.top = top;
-        this.right = right;
-        this.bottom = bottom;
+    private boolean needReset = true;
+
+    // +1 or -1 ,direction to center of rect is positive
+    private int leftDirection = 1;
+    private int topDirection = 1;
+    private int rightDirection = 1;
+    private int bottomDirection = 1;
+
+    private float strokeCenter;
+
+    private float sizeMaxRate;
+    private float sizeMaxRange;
+
+    RoundRect(int alphaMaxRate, float radiusMaxRate, float strokeWidth) {
 
         this.alphaMaxRate = alphaMaxRate;
         this.radiusMaxRate = radiusMaxRate;
 
         this.strokeWidth = strokeWidth;
 
-        this.rect = new RectF();
+        rect = new RectF();
+
+        random = new Random(new SecureRandom().nextInt());
     }
 
-    void draw(Canvas canvas, Paint paint){
-        if (this.left > strokeWidth) {
-            this.left = strokeWidth / 2;
-        } else {
-            this.left = (float) (this.left + Math.random() * strokeWidth);
-        }
-        if (this.top > strokeWidth) {
-            this.top = strokeWidth / 2;
-        } else {
-            this.top = (float) (this.top + Math.random() * strokeWidth);
-        }
-        if (this.right > strokeWidth) {
-            this.right = canvas.getWidth() - this.left - strokeWidth / 2;
-        } else {
-            this.right = (float) (this.right - this.left - Math.random() * strokeWidth);
-        }
-        if (this.bottom > strokeWidth) {
-            this.bottom = canvas.getHeight() - this.top - strokeWidth / 2;
-        } else {
-            this.bottom = this.bottom - this.top - new Random().nextInt() % strokeWidth;
-        }
-        if (this.alpha > 0xff || this.alpha < 0) {
-            this.alpha = 0xff;
-        } else {
-            this.alpha = this.alpha + (new Random().nextInt() % alphaMaxRate - alphaMaxRate / 2);
-        }
-        if (this.radius > 32 || this.radius < 0) {
-            this.radius = 16;
-        } else {
-            this.radius = this.radius + (new Random().nextInt() % radiusMaxRate - radiusMaxRate / 2);
-        }
-        rect.set(this.left, this.top, this.right, this.bottom);
+    void draw(Canvas canvas, Paint paint) {
+        if (needReset) {
 
-        paint.setAlpha(this.alpha);
+            left = strokeCenter;
+            top = strokeCenter;
+            right = canvas.getWidth() - left - strokeCenter;
+            bottom = canvas.getHeight() - top - strokeCenter;
+
+            strokeCenter = strokeWidth / 2;
+            sizeMaxRange = strokeWidth;
+            sizeMaxRate = strokeWidth / 32;
+            alphaMaxRange = 0xff;
+            radiusMaxRange = strokeWidth * 2;
+
+            needReset = false;
+        }
+
+        if (left > strokeCenter + sizeMaxRange) {
+            leftDirection = -1;
+        } else if (left < strokeCenter) {
+            leftDirection = 1;
+        }
+        left = (float) (left + Math.random() * sizeMaxRate * leftDirection);
+
+        if (top > strokeCenter + sizeMaxRange) {
+            topDirection = -1;
+        } else if (top < strokeCenter) {
+            topDirection = 1;
+        }
+        top = (float) (top + Math.random() * sizeMaxRate * topDirection);
+
+        if (right < canvas.getWidth() - strokeCenter - sizeMaxRange) {
+            rightDirection = -1;
+        } else if (right > canvas.getWidth() - strokeCenter) {
+            rightDirection = 1;
+        }
+        right = (float) (right - Math.random() * sizeMaxRate * rightDirection);
+
+        if (bottom < canvas.getHeight() - strokeCenter - sizeMaxRange) {
+            bottomDirection = -1;
+        } else if (bottom > canvas.getHeight() - strokeCenter) {
+            bottomDirection = 1;
+        }
+        bottom = bottom - random.nextFloat() % sizeMaxRate * bottomDirection;
+
+        if (alpha > alphaMaxRange || alpha < 0) {
+            alpha = alphaMaxRange / 2;
+        } else {
+            alpha = alpha + (random.nextInt() % alphaMaxRate) * (random.nextBoolean() ? 1 : -1);
+        }
+        if (radius > radiusMaxRange || radius < 0) {
+            radius = radiusMaxRange / 2;
+        } else {
+            radius = radius + (random.nextInt() % radiusMaxRate) * (random.nextBoolean() ? 1 : -1);
+        }
+        rect.set(left, top, right, bottom);
+
+        paint.setAlpha(alpha);
 
         canvas.drawRoundRect(rect, radius, radius, paint);
     }

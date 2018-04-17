@@ -45,8 +45,8 @@ public class LightFrameView extends ViewGroup {
     private int linearGradientStartColor;
     private int linearGradientEndColor;
 
-    private static final int DEFAULT_MAX_ALPHA_RATE = 0x20;
-    private static final int DEFAULT_MAX_ROUND_RECT_RADIUS_RATE = 4;
+    private static final int DEFAULT_MAX_ALPHA_RATE = 0x08;
+    private static final int DEFAULT_MAX_ROUND_RECT_RADIUS_RATE = 2;
 
     private int maxAlphaRate;
     private float maxRoundRectRadiusRate;
@@ -114,7 +114,14 @@ public class LightFrameView extends ViewGroup {
         // only deal with first child
         View child = getChildAt(0);
         measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
-        setMeasuredDimension(resolveSize(child.getMeasuredWidth(), widthMeasureSpec), resolveSize(child.getMeasuredHeight(), heightMeasureSpec));
+        MarginLayoutParams childLayoutParams = (MarginLayoutParams) child.getLayoutParams();
+        setMeasuredDimension(
+                resolveSize(
+                        child.getMeasuredWidth() + getPaddingLeft() + getPaddingRight() + childLayoutParams.leftMargin + childLayoutParams.rightMargin,
+                        widthMeasureSpec),
+                resolveSize(
+                        child.getMeasuredHeight() + getPaddingTop() + getPaddingBottom() + childLayoutParams.topMargin + childLayoutParams.bottomMargin,
+                        heightMeasureSpec));
     }
 
     @Override
@@ -124,7 +131,16 @@ public class LightFrameView extends ViewGroup {
         if (child == null) {
             return;
         }
-        child.layout(0, 0, child.getMeasuredWidth(), child.getMeasuredHeight());
+        int left;
+        int top;
+        MarginLayoutParams childLayoutParams = (MarginLayoutParams) child.getLayoutParams();
+        left = getPaddingLeft() + childLayoutParams.leftMargin;
+        top = getPaddingTop() + childLayoutParams.topMargin;
+        child.layout(
+                left,
+                top,
+                left + child.getMeasuredWidth(),
+                top + child.getMeasuredHeight());
         Log.e("LightFrameView", "onLayout Measured w:" + getMeasuredWidth() + "  h:" + getMeasuredHeight());
     }
 
@@ -177,7 +193,7 @@ public class LightFrameView extends ViewGroup {
         sweepGradientStartColor = typedArray.getColor(R.styleable.LightFrameView_sweepGradientStartColor, DEFAULT_SWEEP_GRADIENT_START_COLOR);
         sweepGradientEndColor = typedArray.getColor(R.styleable.LightFrameView_sweepGradientEndColor, DEFAULT_SWEEP_GRADIENT_END_COLOR);
         linearGradientStartColor = typedArray.getColor(R.styleable.LightFrameView_linearGradientStartColor, DEFAULT_LINEAR_GRADIENT_START_COLOR);
-        linearGradientEndColor = typedArray.getColor(R.styleable.LightFrameView_linearGradientStartColor, DEFAULT_LINEAR_GRADIENT_END_COLOR);
+        linearGradientEndColor = typedArray.getColor(R.styleable.LightFrameView_linearGradientEndColor, DEFAULT_LINEAR_GRADIENT_END_COLOR);
 
         maxAlphaRate = typedArray.getInt(R.styleable.LightFrameView_maxAlphaRate, DEFAULT_MAX_ALPHA_RATE);
         maxRoundRectRadiusRate = typedArray.getDimension(R.styleable.LightFrameView_maxRoundRectRadiusRate, Utils.dp2px(getContext(), DEFAULT_MAX_ROUND_RECT_RADIUS_RATE));
@@ -232,10 +248,10 @@ public class LightFrameView extends ViewGroup {
         linearRects = new RoundRect[linearRectsCount];
 
         for (int i = 0; i < sweepRects.length; i = i + 1) {
-            sweepRects[i] = new RoundRect(0, 0, width, height, maxAlphaRate, maxRoundRectRadiusRate, strokeWidth);
+            sweepRects[i] = new RoundRect(maxAlphaRate, maxRoundRectRadiusRate, strokeWidth);
         }
         for (int i = 0; i < linearRects.length; i = i + 1) {
-            linearRects[i] = new RoundRect(0, 0, width, height, maxAlphaRate, maxRoundRectRadiusRate, strokeWidth);
+            linearRects[i] = new RoundRect(maxAlphaRate, maxRoundRectRadiusRate, strokeWidth);
         }
         paintSweep.setShader(new SweepGradient(
                 width / 2,
