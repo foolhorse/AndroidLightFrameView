@@ -1,14 +1,14 @@
 # AndroidLightFrameView
 
-A normal View can have a light frame animation through wrapped by the LightFrameView.
+`LightFrameView` is able to provide a light frame animation by wrapping it to a normal `View`.
 
-LightFrameView only deal with first child view .
+`LightFrameView` only deals with first child view.
 
 ![basic](https://raw.githubusercontent.com/foolhorse/AndroidLightFrameView/master/art/basic.gif)
 
 ## Usage
 
-### dependencies
+### Dependencies
 
 ```groovy
 compile 'me.machao.lightframeview:lightframeview:1.0.0'
@@ -33,17 +33,17 @@ compile 'me.machao.lightframeview:lightframeview:1.0.0'
 </me.machao.lightframeview.LightFrameView>
 ```
 
-All we need to do is using `LightFrameView` wrap your normal `View`.
+All you need to do is applying `LightFrameView` to wrap your normal `View`.
 
-As we can see , `LightFrameView` support some xml attributes, you can check it here:
+As you can see , `LightFrameView` supports certain `XML` attributes which you can check in here:
 [attrs.xml](https://github.com/foolhorse/AndroidLightFrameView/blob/master/lightframeview/src/main/res/values/attrs.xml)
 
-we can also change some behavior of `LightFrameView` through Java code :
+You are also able to change some behaviors of `LightFrameView` through Java code:
 
 ```Java
 lightFrameView.setEffectsEnable(!lightFrameView.isEffectsEnabled());
 ```
 
-ok, let have some fun, make some vapor wave effects. lol.
+OK, let's have some fun and make some vapor wave effects. lol.
 
 ![vaporwave](https://raw.githubusercontent.com/foolhorse/AndroidLightFrameView/master/art/vaporwave.gif)
