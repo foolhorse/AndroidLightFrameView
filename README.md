@@ -4,7 +4,7 @@ A normal View can have a light frame animation through wrapped by the LightFrame
 
 LightFrameView only deal with first child view .
 
-[]()
+![basic](https://raw.githubusercontent.com/foolhorse/AndroidLightFrameView/master/art/basic.gif)
 
 ## Usage
 
@@ -46,5 +46,4 @@ lightFrameView.setEffectsEnable(!lightFrameView.isEffectsEnabled());
 
 ok, let have some fun, make some vapor wave effects. lol.
 
-
-[]()
+![vaporwave](https://raw.githubusercontent.com/foolhorse/AndroidLightFrameView/master/art/vaporwave.gif)
