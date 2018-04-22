@@ -35,7 +35,7 @@ compile 'me.machao.lightframeview:lightframeview:1.0.0'
 
 All you need to do is applying `LightFrameView` to wrap your normal `View`.
 
-As you can see , `LightFrameView` supports certain `XML` attributes which you can check in here:
+As you can see , `LightFrameView` supports certain `XML` attributes which you can check it here:
 [attrs.xml](https://github.com/foolhorse/AndroidLightFrameView/blob/master/lightframeview/src/main/res/values/attrs.xml)
 
 You are also able to change some behaviors of `LightFrameView` through Java code:
