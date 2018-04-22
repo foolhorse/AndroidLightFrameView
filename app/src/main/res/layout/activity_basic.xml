@@ -18,14 +18,13 @@
         android:id="@+id/lfvWrapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
         app:linearGradientEndColor="#f00"
         app:linearGradientStartColor="#ff0"
         app:strokeWidth="2dp"
         app:sweepGradientEndColor="#0f0"
         app:sweepGradientStartColor="#00f">
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LightFrameView wrap View" />
