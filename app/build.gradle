@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
+    buildToolsVersion '26.0.3'
+
     defaultConfig {
         applicationId "me.machao.lightframeview.sample"
         minSdkVersion 16
