@@ -1,5 +1,17 @@
 language: android
 
+branches:
+  except:
+    - gh-pages
+
+notifications:
+  email: false
+
+sudo: false
+
+jdk:
+  - oraclejdk8
+
 android:
   components:
 #    - platform-tools
@@ -18,3 +30,14 @@ android:
 
 before_install:
   - yes | sdkmanager "platforms;android-26"
+
+script:
+  - ./gradlew clean build
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle
