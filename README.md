@@ -1,5 +1,7 @@
 # AndroidLightFrameView
 
+[![Build Status](https://travis-ci.org/foolhorse/AndroidLightFrameView.svg?branch=master)](https://travis-ci.org/foolhorse/AndroidLightFrameView)
+
 `LightFrameView` is able to provide a light frame animation by wrapping it to a normal `View`.
 
 `LightFrameView` only deals with first child view.
