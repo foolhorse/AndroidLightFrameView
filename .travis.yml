@@ -33,7 +33,8 @@ before_install:
  - chmod +x gradlew
 
 script:
-  - ./gradlew clean build
+  - ./gradlew build
+#  - ./gradlew clean build
 #  - ./gradlew assembleRelease
 
 before_cache:
