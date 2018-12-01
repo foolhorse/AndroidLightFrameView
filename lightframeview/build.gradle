@@ -34,4 +34,5 @@ dependencies {
 }
 
 //apply from: project.file('gradle-maven-push.gradle')
-apply from: 'https://gist.githubusercontent.com/foolhorse/2175dc920e43e4abc27f72e792352fad/raw/1bfcb2b0d6fbbbb0169672f5df79f887a95fb3e8/gradle-bintray-push.gradle'
+apply from: 'https://raw.githubusercontent.com/foolhorse/GradleBintrayPush/master/gradle-bintray-push.gradle'
+
