@@ -7,7 +7,8 @@ branches:
 notifications:
   email: false
 
-sudo: false
+sudo: false # false for Container-Based Infrastructure,
+#sudo: required # required for Sudo-enabled Infrastructure
 
 jdk:
   - oraclejdk8
@@ -18,8 +19,8 @@ android:
     - platform-tools
     - tools
 
-    - build-tools-26.0.3 # The BuildTools version used by the project
-    - android-26 # The SDK version used to compile the project
+    - build-tools-28.0.3 # The BuildTools version used by the project
+    - android-28 # The SDK version used to compile the project
 
     - extra-android-m2repository # Android Support Repository
     - extra-android-support # Support Library
@@ -33,19 +34,23 @@ before_install:
  - chmod +x gradlew
 
 script:
-  - ./gradlew build
-#  - ./gradlew clean build
+  - ./gradlew clean build
 #  - ./gradlew assembleRelease
 
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock # Avoid to repack it due locks
+#  - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+  - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/classAnalysis/classAnalysis.lock
+  - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/jarSnapshots/jarSnapshots.lock
 
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
 
 #before_deploy:
 #  # 使用 mv 命令进行修改apk文件的名字
